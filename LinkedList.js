@@ -81,7 +81,7 @@ class LinkedList {
             deleteNode.next = null;
             this.size--;
         }
-        return deleteNode.value;
+        return deleteNode;
 
     }
 
@@ -153,6 +153,11 @@ class LinkedList {
             temp.next = prev;
             prev = temp;
             temp = next;
+        }
+    }
+    findMiddleNode(){
+        if(this.size%2){
+            return this.get((this.size)/2+1);
         }
     }
 }
