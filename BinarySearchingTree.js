@@ -83,15 +83,3 @@ class BinarySearchTree {
         }
     }
 }
-
-let tree = new BinarySearchTree();
-tree.insert(10)
-tree.insert(4);
-tree.insert(15);
-tree.insert(2);
-tree.insert(5);
-tree.insert(13);
-tree.insert(20);
-
-console.log(tree.findMin());
-console.log(tree.findMax());
