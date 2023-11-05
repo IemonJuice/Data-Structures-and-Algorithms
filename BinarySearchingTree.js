@@ -68,7 +68,6 @@ class BinarySearchTree {
             }
         }
     }
-
     findMax() {
         if (this.root === null) {
             return undefined;
