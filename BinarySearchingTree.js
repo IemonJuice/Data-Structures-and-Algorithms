@@ -68,18 +68,100 @@ class BinarySearchTree {
             }
         }
     }
+
     findMax() {
         if (this.root === null) {
             return undefined;
         }
         let temp = this.root;
         while (temp !== null) {
-            if (temp.right !==null) {
+            if (temp.right !== null) {
                 temp = temp.right;
-            }
-            else {
+            } else {
                 return temp;
             }
         }
     }
+
+    BreadthFirstSearch() {
+        let currentNode = this.root;
+        let queue = [];
+        let results = [];
+        queue.push(currentNode);
+        while (queue.length) {
+            currentNode = queue.shift();
+            results.push(currentNode.value);
+            if (currentNode.left) {
+                queue.push(currentNode.left);
+            }
+            if (currentNode.right) {
+                queue.push(currentNode.right);
+            }
+        }
+        return results;
+    }
+
+    DeathFirstSearchPreOrder() {
+        let results = [];
+
+        function traverse(currentNode) {
+            results.push(currentNode.value);
+            if (currentNode.left) {
+                traverse(currentNode.left);
+            }
+            if (currentNode.right) {
+                traverse(currentNode.right);
+            }
+        }
+
+        traverse(this.root);
+        return results;
+    }
+
+    DeathFirstSearchInOrder() {
+        let results = [];
+        function traverse(currentNode) {
+            if (currentNode.left) {
+                traverse(currentNode.left);
+            }
+            results.push(currentNode.value);
+            if (currentNode.right) {
+                traverse(currentNode.right);
+            }
+        }
+
+        traverse(this.root);
+        return results;
+    }
+
+    DeathFirstSearchPostOrder() {
+        let results = [];
+
+        function traverse(currentNode) {
+            if (currentNode.left) {
+                traverse(currentNode.left);
+            }
+            if (currentNode.right) {
+                traverse(currentNode.right);
+            }
+            results.push(currentNode.value);
+        }
+
+        traverse(this.root);
+        return results;
+    }
 }
+
+let tree = new BinarySearchTree();
+tree.insert(10)
+tree.insert(5)
+tree.insert(15)
+tree.insert(3)
+tree.insert(7)
+tree.insert(14)
+tree.insert(19)
+
+
+console.log(tree.DeathFirstSearchPreOrder());
+console.log(tree.DeathFirstSearchPostOrder());
+console.log(tree.DeathFirstSearchInOrder());

@@ -14,8 +14,8 @@ class LinkedList {
     size;
 
     constructor(value) {
-        const newHead = new Node(value);
-        this.head = newHead;
+        const newNode = new Node(value);
+        this.head = newNode;
         this.tail = this.head;
         this.size = 1;
     }
